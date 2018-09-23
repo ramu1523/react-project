@@ -2,52 +2,60 @@ var React = require('react');
 var ReactDOM = require('react-dom');
 require('./index.css');
 //Component has State, life cycle methods/events and UI
-var USER_DATA = {
-  name: 'Tyler Mcginnis',
-  username: 'tylermcginnis',
-  img:'https://avatars0.githubusercontent.com/u/2933430?v=3&s=460'
-}
-class Avatar extends React.Component
+/**class Users extends React.Component
 {
   render(){
     return(
-      <img src={this.props.img} />
-    )
-  }
-}
-class Label extends React.Component{
-  render()
-  {
-    return(
-      <h1> Name: {this.props.label} </h1>
+      <ul>
+        {this.props.list.map(function(user){
+          return (<li> {user}</li>)
+        })}
+      </ul>
     )
   }
 }
 
-class ScreenName extends React.Component{
+ReactDOM.render(
+  <Users list={['ramu','anusha','achyuth','bhargav']}/>, document.getElementById('app')
+)*/
+
+class Friends extends React.Component{
   render()
   {
-    return(
-      <h3> username: {this.props.username} </h3>
-    )
-  }
-}
-class Badge extends React.Component
-{
-  render()
-  {
-    console.log(this.props);
+    var friends = this.props.list.filter(function(user){
+    return  user.friend === true
+    });
+
+    var nonFriends = this.props.list.filter(function(user){
+      return user.friend === false
+    })
+
     return(
       <div>
-        <Avatar img={this.props.user.img}/>
-        <Label label={this.props.user.name}/>
-        <ScreenName username={this.props.user.username}/>
+      <h1> Friends </h1>
+      <ul>
+        {friends.map(function(user)
+          {
+            return <li key={user.name}>{user.name}</li>
+          })}
+      </ul>
+      <hr />
+
+      <h1> Non Friends </h1>
+      <ul>
+       {nonFriends.map(function(user)
+     {
+       return <li key={user.name}> {user.name} </li>
+     })}
+      </ul>
       </div>
     )
   }
 }
 
 ReactDOM.render(
-  <Badge user={USER_DATA}/>,
-  document.getElementById('app')
+  <Friends list={[{name:'ramu',friend:true},
+{name:'anusha',friend:true},
+{name:'achyuth',friend:true},
+{name:'ramesh',friend:false}]} />, document.getElementById('app')
 )
