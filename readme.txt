@@ -25,3 +25,17 @@ instead of above command use "npm run start" command to build the code and open 
 
 if you want to use the same command for production update the sart command in package.json file with below command and use the command to start the app "npm run start"
   "start": "webpack"
+
+
+  var friends = ['Ryan', 'Michael', 'Dan']
+  friends.slice(0, 1) // 'Ryan'
+  friends.slice(0, 1) // 'Ryan'
+  friends.slice(0, 1) // 'Ryan'
+
+
+  var friends = ['Ryan', 'Michael', 'Dan']
+friends.splice(0, 1) // ["Ryan"]
+friends.splice(0, 1) // ["Michael"]
+friends.splice(0, 1) // ["Dan"]
+
+npm install --save prop-types
